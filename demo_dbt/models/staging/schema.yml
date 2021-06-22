@@ -1,0 +1,64 @@
+version: 2
+
+
+sources:
+  - name: DBT_DEMO
+    description: sample database
+    database: DEMO_DB
+    schema: PUBLIC
+    tables:
+      - name: CUSTOMER
+        description: table with customer information
+        columns:
+          - name: CUSTOMER_UNIQUE_ID
+            tests:
+              - not_null
+
+      - name: ORDERS
+        description: table with orders information
+        columns:
+          - name: ORDER_ID
+        tests:
+          - unique
+          - not_null
+
+      - name: CUSTOMER_ORDER_ID
+        tests:
+          - unique
+          - not_null
+
+      - name: STATE
+        columns:
+          - name: st
+            tests:
+              - accepted_values:
+                  values:
+                    [
+                      "AC",
+                      "AL",
+                      "AP",
+                      "AM",
+                      "BA",
+                      "CE",
+                      "DF",
+                      "ES",
+                      "GO",
+                      "MA",
+                      "MT",
+                      "MS",
+                      "MG",
+                      "PA",
+                      "PB",
+                      "PR",
+                      "PE",
+                      "PI",
+                      "RJ",
+                      "RN",
+                      "RS",
+                      "RO",
+                      "RR",
+                      "SC",
+                      "SP",
+                      "SE",
+                      "TO",
+                    ]
